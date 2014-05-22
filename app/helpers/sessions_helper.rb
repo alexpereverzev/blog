@@ -47,5 +47,13 @@ def get_user_image(id)
 end
 end
 
+$idi
 
+def comment_id(comment_id)
+		$idi=comment_id
+end
+
+def get_id
+	$idi
+	end
 end

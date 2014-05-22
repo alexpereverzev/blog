@@ -1,17 +1,16 @@
-<h1>Wellcome to my blog</h1>
-
 <% @posts.each do |post| %>
-  <h1>Posted by <%= truncate post.user.name%> </h1>
-  <%=image_tag post.user.image.url, size: '25' %>  
+  <h2>
+   
+  Posted by <%=image_tag post.user.image.url, size: '25' %> <%= truncate post.user.name%> </h2>
+   
   <h2><%= link_to post.title, post %></h2>
   <p>
   <%= truncate post.text %>
 </p>
-  <% end %>
+	 <% end %>
 
   <p>
-  <%= link_to "New post", new_post_path %>
-  <%= link_to "Registration", :controller => "user", :action => "login"%>
+  <h3><%= link_to "New post", new_post_path %></h3>
   </p>
 
 

@@ -16,7 +16,13 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    if signed_in?
     @post = Post.new
+    else
+      @posts = Post.all
+      render 'index'
+  end
+
   end
 
   # GET /posts/1/edit
@@ -26,6 +32,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    if signed_in?
+    
     @post = Post.new(post_params)
     @user= User.find(current_user.id)
     @post=@user.posts.build(post_params)  
@@ -39,10 +47,12 @@ class PostsController < ApplicationController
       end
     end
   end
+  end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    if @post.user_id == current_user.id
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -52,19 +62,32 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+    else
+      render action: 'edit' 
+  end
+
   end
 
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+     if signed_in?
      if @post.user_id == current_user.id
     @post.destroy  
-    end
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :no_content }
       format.js {render :layout => false}
+                end
+      end
+    else
+      respond_to do |format|
+      format.html { redirect_to @post }
+      format.json { head :no_content }
+      format.js {render :layout => false}
     end
+    
+  end
     
   end
 

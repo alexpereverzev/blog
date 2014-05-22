@@ -14,14 +14,15 @@
 
 
 <% @post.comments.each do |comment| %>
+<div id='<%= comment.id%>'>
 	<h4><p>Send <%= get_user(comment) %>
 	<%img= get_user_image(comment)%>
 	<%=image_tag img, size: '25' %></p></h4>
 	<h3><p><%= comment.text %></p></h3>
 
 		
-<%= link_to 'Delete comment',[@post, comment], :method => :delete, :confirm => " Are you sure", class: 'delete_comment',:remote => true%>
-
+<%= link_to 'Delete comment',[@post, comment], :method => :delete, :confirm => " Are you sure", :remote => true%>
+</div>
 		<% end %>
 <%= form_for [@post,@post.comments.build] do |f| %>
 

@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class ="center hero-unit">
-			<h1><p>My BLOG</p></h1>
+			<h1>My BLOG</h1>
       </div>
 <header class="navbar navbar-fixed-top navbar-inverse">
       
@@ -17,14 +17,14 @@
         <div class="container">
           <nav>
             <ul class="nav pull-right">
-              <%= link_to "Registration", :controller => "user", :action => "login"%>
-              <li><% if signed_in? %>
+              <%= link_to "Registration", :controller => "user", :action => "login"%><br>
+              <% if signed_in? %>
 
   <%= link_to "Sign out", signout_path, method: "delete"%>
 
   <% else %>
 	<%= link_to "Sign in", signin_path %>
-<%end%></li>
+<%end%>
             </ul>
           </nav>
         </div>
