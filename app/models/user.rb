@@ -7,6 +7,7 @@ has_attached_file :image
 validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
 has_secure_password
+#validates :name, presense:true
 #validates_presence_of :password, length: {minimum: 3}
 validates_presence_of :password, :on => create
 

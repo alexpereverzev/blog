@@ -73,18 +73,23 @@ class PostsController < ApplicationController
   def destroy
      if signed_in?
      if @post.user_id == current_user.id
-    @post.destroy  
+      #@post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to posts_url
+      if @post.user_id == current_user.id
+      @post.destroy
+        end
+       }
       format.json { head :no_content }
       format.js {render :layout => false}
                 end
       end
     else
+      
       respond_to do |format|
-      format.html { redirect_to @post }
+      format.html { redirect_to posts_url }
       format.json { head :no_content }
-      format.js {render :layout => false}
+     # format.js {render :layout => false}
     end
     
   end
