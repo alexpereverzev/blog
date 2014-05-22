@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   def create
-  	@post = Post.find(params[:post_id])
+    @post = Post.find(params[:post_id])
+    
+       if signed_in?
   	@user= User.find(current_user.id)
     item_params=params.require(:comment).permit(:user_id,:post_id,:text)
   	item_params[:user_id]=current_user.id
@@ -8,7 +10,7 @@ class CommentsController < ApplicationController
     @comment.save
     @comment=@user.comments.build(item_params)  
     @comment.save
-
+  end
   	redirect_to @post
 
   end
