@@ -1,0 +1,24 @@
+<h1>Wellcome to my blog</h1>
+
+<% @posts.each do |post| %>
+  <h1>Posted by <%= truncate post.user.name%> </h1>
+  <%=image_tag post.user.image.url, size: '25' %>  
+  <h2><%= link_to post.title, post %></h2>
+  <p>
+  <%= truncate post.text %>
+</p>
+  <% end %>
+
+  <p>
+  <%= link_to "New post", new_post_path %>
+  <%= link_to "LOGIN", :controller => "user", :action => "login"%>
+  </p>
+
+
+  <% if signed_in? %>
+
+  <%= link_to "Sign out", signout_path, method: "delete"%>
+
+  <% else %>
+	<%= link_to "Sign in", signin_path %>
+<%end%>

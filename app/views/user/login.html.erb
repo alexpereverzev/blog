@@ -1,0 +1,19 @@
+<h1>User#login</h1>
+<p>Find me in app/views/user/login.html.erb</p>
+<%= form_for(:user,:url =>{:action =>'create'}, :method => :post, html: {multipart: true}) do |f|%>
+	<%= f.label :name%>
+	<%= f.text_field :name%>
+
+	<%= f.label :password  %>
+	<%= f.password_field :password%>
+	<p>
+			<%= f.label :image, 'Attach image'%>
+			<%= f.file_field :image, :remote=>true%>
+	
+
+	</p>
+
+	<%= f.submit "Register" %>
+
+	<% end %>
+
