@@ -11,14 +11,8 @@
 
   <p>
   <%= link_to "New post", new_post_path %>
-  <%= link_to "LOGIN", :controller => "user", :action => "login"%>
+  <%= link_to "Registration", :controller => "user", :action => "login"%>
   </p>
 
 
-  <% if signed_in? %>
-
-  <%= link_to "Sign out", signout_path, method: "delete"%>
-
-  <% else %>
-	<%= link_to "Sign in", signin_path %>
-<%end%>
+  
