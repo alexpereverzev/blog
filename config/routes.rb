@@ -1,5 +1,5 @@
 Blog::Application.routes.draw do
- root 'user#login'
+ root 'posts#index'
   get "user/login"
   post "user/create"
   get "comments/create"
